@@ -16,30 +16,30 @@ BuildRequires:  kf6-extra-cmake-modules >= %{majmin_ver_kf6}
 BuildRequires:  gcc-c++
 BuildRequires:  kf6-rpm-macros
 BuildRequires:  cmake
-BuildRequires:  cmake(KF6Archive)
-BuildRequires:  cmake(KF6Crash)
-BuildRequires:  cmake(KF6Solid)
+BuildRequires:  pkgconfig(KF6Archive)
+BuildRequires:  pkgconfig(KF6Crash)
+BuildRequires:  pkgconfig(KF6Solid)
 BuildRequires:  switcheroo-control
-BuildRequires:  cmake(KF6ColorScheme)
-BuildRequires:  cmake(KF6Config)
-BuildRequires:  cmake(KF6CoreAddons)
-BuildRequires:  cmake(KF6DBusAddons)
-BuildRequires:  cmake(KF6DocTools)
-BuildRequires:  cmake(KF6GuiAddons)
-BuildRequires:  cmake(KF6I18n)
-BuildRequires:  cmake(KF6Service)
+BuildRequires:  pkgconfig(KF6ColorScheme)
+BuildRequires:  pkgconfig(KF6Config)
+BuildRequires:  pkgconfig(KF6CoreAddons)
+BuildRequires:  pkgconfig(KF6DBusAddons)
+BuildRequires:  pkgconfig(KF6DocTools)
+BuildRequires:  pkgconfig(KF6GuiAddons)
+BuildRequires:  pkgconfig(KF6I18n)
+BuildRequires:  pkgconfig(KF6Service)
 BuildRequires:  qt6-qtbase-private-devel
-BuildRequires:  cmake(KF6Bookmarks)
-BuildRequires:  cmake(KF6Completion)
-BuildRequires:  cmake(KF6ConfigWidgets)
-BuildRequires:  cmake(KF6IconThemes)
-BuildRequires:  cmake(KF6ItemViews)
-BuildRequires:  cmake(KF6JobWidgets)
-BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(KF6Notifications)
-BuildRequires:  cmake(KF6Wallet)
-BuildRequires:  cmake(KF6WidgetsAddons)
-BuildRequires:  cmake(KF6XmlGui)
+BuildRequires:  pkgconfig(KF6Bookmarks)
+BuildRequires:  pkgconfig(KF6Completion)
+BuildRequires:  pkgconfig(KF6ConfigWidgets)
+BuildRequires:  pkgconfig(KF6IconThemes)
+BuildRequires:  pkgconfig(KF6ItemViews)
+BuildRequires:  pkgconfig(KF6JobWidgets)
+BuildRequires:  pkgconfig(KF6WindowSystem)
+BuildRequires:  pkgconfig(KF6Notifications)
+BuildRequires:  pkgconfig(KF6Wallet)
+BuildRequires:  pkgconfig(KF6WidgetsAddons)
+BuildRequires:  pkgconfig(KF6XmlGui)
 
 BuildRequires:  libacl-devel
 #%%if !0%%{?flatpak}
@@ -52,11 +52,11 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  zlib-devel
 
 BuildRequires:  qt6-qtbase-devel
-BuildRequires:  cmake(Qt6UiPlugin)
-BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6UiPlugin)
+BuildRequires:  pkgconfig(Qt6Qml)
 
-BuildRequires:  cmake(KF6KDED)
-BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  pkgconfig(KF6KDED)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
 
 Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 Requires:       %{name}-widgets%{?_isa} = %{version}-%{release}
@@ -72,15 +72,15 @@ KDE Frameworks 6 Tier 3 solution for filesystem abstraction
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
 Requires:       kf6-kbookmarks-devel
-Requires:       cmake(KF6Completion)
-Requires:       cmake(KF6Config)
-Requires:       cmake(KF6CoreAddons)
-Requires:       cmake(KF6ItemViews)
-Requires:       cmake(KF6JobWidgets)
-Requires:       cmake(KF6Service)
-Requires:       cmake(KF6Solid)
-Requires:       cmake(KF6XmlGui)
-Requires:       cmake(KF6WindowSystem)
+Requires:       pkgconfig(KF6Completion)
+Requires:       pkgconfig(KF6Config)
+Requires:       pkgconfig(KF6CoreAddons)
+Requires:       pkgconfig(KF6ItemViews)
+Requires:       pkgconfig(KF6JobWidgets)
+Requires:       pkgconfig(KF6Service)
+Requires:       pkgconfig(KF6Solid)
+Requires:       pkgconfig(KF6XmlGui)
+Requires:       pkgconfig(KF6WindowSystem)
 Requires:       qt6-qtbase-devel
 %description    devel
 The %{name}-devel package contains libraries and header files for
