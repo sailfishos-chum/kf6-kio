@@ -1,0 +1,126 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35e5208cd..fa74a1b4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,9 +61,9 @@ find_package(KF6I18n ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF6Service ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF6DocTools ${KF_DEP_VERSION})
+ find_package(KF6Solid ${KF_DEP_VERSION} REQUIRED) # for kio_trash
+-if (NOT ANDROID)
+-    find_package(KF6Crash ${KF_DEP_VERSION} REQUIRED)
+-endif()
++#if (NOT ANDROID)
++#    find_package(KF6Crash ${KF_DEP_VERSION} REQUIRED)
++#endif()
+ 
+ if (NOT KIOCORE_ONLY)
+     find_package(KF6WindowSystem ${KF_DEP_VERSION} REQUIRED)
+diff --git a/KF6KIOConfig.cmake.in b/KF6KIOConfig.cmake.in
+index c7cfb4348..254dae4ac 100644
+--- a/KF6KIOConfig.cmake.in
++++ b/KF6KIOConfig.cmake.in
+@@ -9,9 +9,9 @@ find_dependency(KF6Config "@KF_DEP_VERSION@")
+ if (NOT @BUILD_SHARED_LIBS@)
+     find_dependency(KF6I18n "@KF_DEP_VERSION@")
+ 
+-    if (NOT ANDROID)
+-        find_dependency(KF6Crash "@KF_DEP_VERSION@")
+-    endif()
++#    if (NOT ANDROID)
++#        find_dependency(KF6Crash "@KF_DEP_VERSION@")
++#    endif()
+ 
+     if (UNIX AND NOT ANDROID)
+         find_dependency(KF6Auth "@KF_DEP_VERSION@")
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 0ec3652c1..2e5dd1898 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -202,9 +202,9 @@ PRIVATE
+  KF6::Service
+ )
+ 
+-if (NOT ANDROID)
+-    target_link_libraries(KF6KIOCore PRIVATE KF6::Crash)
+-endif()
++#if (NOT ANDROID)
++#    target_link_libraries(KF6KIOCore PRIVATE KF6::Crash)
++#endif()
+ 
+ if (HAVE_QTDBUS)
+     target_link_libraries(KF6KIOCore PUBLIC ${DBUS_LIB})
+diff --git a/src/core/slavebase.cpp b/src/core/slavebase.cpp
+index bbedd33b2..b156004a2 100644
+--- a/src/core/slavebase.cpp
++++ b/src/core/slavebase.cpp
+@@ -35,9 +35,9 @@
+ #include <KLocalizedString>
+ #include <QThread>
+ 
+-#ifndef Q_OS_ANDROID
+-#include <KCrash>
+-#endif
++//#ifndef Q_OS_ANDROID
++//#include <KCrash>
++//#endif
+ 
+ #include "authinfo.h"
+ #include "kremoteencoding.h"
+@@ -283,14 +283,14 @@ SlaveBase::SlaveBase(const QByteArray &protocol, const QByteArray &pool_socket,
+     d->poolSocket = QFile::decodeName(pool_socket);
+ 
+     if (QThread::currentThread() == qApp->thread()) {
+-#ifndef Q_OS_ANDROID
+-        // Setup KCrash for crash reports, but not when running the worker in-app
+-        if (QCoreApplication::arguments()[0].endsWith(QLatin1String("kioworker"))) {
+-            KAboutData about(QStringLiteral("kioworker"), QString(), QStringLiteral(KIO_VERSION_STRING));
+-            KAboutData::setApplicationData(about);
+-            KCrash::initialize();
+-        }
+-#endif
++//#ifndef Q_OS_ANDROID
++//        // Setup KCrash for crash reports, but not when running the worker in-app
++//        if (QCoreApplication::arguments()[0].endsWith(QLatin1String("kioworker"))) {
++//            KAboutData about(QStringLiteral("kioworker"), QString(), QStringLiteral(KIO_VERSION_STRING));
++//            KAboutData::setApplicationData(about);
++//            KCrash::initialize();
++//        }
++//#endif
+ 
+ #ifdef Q_OS_UNIX
+         struct sigaction act;
+diff --git a/src/kiod/CMakeLists.txt b/src/kiod/CMakeLists.txt
+index fed87a9c1..0ef88c343 100644
+--- a/src/kiod/CMakeLists.txt
++++ b/src/kiod/CMakeLists.txt
+@@ -24,7 +24,7 @@ target_link_libraries(kiod6
+    KF6::KIOCore     # ksslcertificatemanager
+    KF6::DBusAddons  # kdedmodule
+    KF6::CoreAddons  # kpluginfactory
+-   KF6::Crash
++#   KF6::Crash
+    Qt6::Network
+    ${DBUS_LIB}
+    Qt6::Widgets     # QApplication
+diff --git a/src/kiod/kiod_main.cpp b/src/kiod/kiod_main.cpp
+index e68dbae4b..700fb0475 100644
+--- a/src/kiod/kiod_main.cpp
++++ b/src/kiod/kiod_main.cpp
+@@ -11,7 +11,7 @@
+ #include <QHash>
+ 
+ #include <KAboutData>
+-#include <KCrash>
++//#include <KCrash>
+ #include <KDBusService>
+ #include <KDEDModule>
+ #include <KPluginFactory>
+@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
+     KAboutData about(QStringLiteral("kiod6"), QString(), QStringLiteral(KIO_VERSION_STRING));
+     KAboutData::setApplicationData(about);
+ 
+-    KCrash::initialize();
++    //KCrash::initialize();
+ 
+     KDBusService service(KDBusService::Unique);
+ 

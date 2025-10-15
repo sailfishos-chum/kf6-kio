@@ -9,7 +9,7 @@ License: BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-only AND GPL-2.0-
 URL:     https://invent.kde.org/frameworks/%{framework}
 
 Source0: %{name}-%{version}.tar.bz2
-
+Patch0:  sailfishos-no-kcrash.patch
 
 
 BuildRequires:  kf6-extra-cmake-modules >= %{kf_version}
