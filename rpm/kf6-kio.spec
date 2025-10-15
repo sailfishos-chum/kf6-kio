@@ -59,8 +59,8 @@ BuildRequires:  pkgconfig(KF6KDED)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
 
 Requires:       %{name}-core%{?_isa} = %{version}-%{release}
-Requires:       %{name}-widgets%{?_isa} = %{version}-%{release}
-Requires:       %{name}-file-widgets%{?_isa} = %{version}-%{release}
+#Requires:       %%{name}-widgets%%{?_isa} = %%{version}-%%{release}
+#Requires:       %%{name}-file-widgets%%{?_isa} = %%{version}-%%{release}
 Requires:       %{name}-gui%{?_isa} = %{version}-%{release}
 
 Requires: kf6-kded
@@ -109,28 +109,28 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %description    core-libs
 %{summary}.
 
-%package        widgets
-Summary:        Widgets for KIO Framework
-## org.kde.klauncher6 service referenced from : widgets/krun.cpp
-## included here for completeness, even those -core already has a dependency.
-%{?kf6_kinit_requires}
-Requires:       %{name}-core%{?_isa} = %{version}-%{release}
-%description    widgets
-KIOWidgets contains classes that provide generic job control, progress
-reporting, etc.
-
-%package        widgets-libs
-Summary:        Runtime libraries for KIO Widgets library
-Requires:       %{name}-widgets%{?_isa} = %{version}-%{release}
-%description    widgets-libs
-%{summary}.
-
-%package        file-widgets
-Summary:        Widgets for file-handling for KIO Framework
-Requires:       %{name}-widgets%{?_isa} = %{version}-%{release}
-%description    file-widgets
-The KIOFileWidgets library provides the file selection dialog and
-its components.
+#%%package        widgets
+#Summary:        Widgets for KIO Framework
+### org.kde.klauncher6 service referenced from : widgets/krun.cpp
+### included here for completeness, even those -core already has a dependency.
+#%%{?kf6_kinit_requires}
+#Requires:       %%{name}-core%%{?_isa} = %%{version}-%%{release}
+#%%description    widgets
+#KIOWidgets contains classes that provide generic job control, progress
+#reporting, etc.
+#
+#%%package        widgets-libs
+#Summary:        Runtime libraries for KIO Widgets library
+#Requires:       %%{name}-widgets%%{?_isa} = %%{version}-%%{release}
+#%%description    widgets-libs
+#%%{summary}.
+#
+#%%package        file-widgets
+#Summary:        Widgets for file-handling for KIO Framework
+#Requires:       %%{name}-widgets%%{?_isa} = %%{version}-%%{release}
+#%%description    file-widgets
+#The KIOFileWidgets library provides the file selection dialog and
+#its components.
 
 %package        gui
 Summary:        Gui components for the KIO Framework
@@ -153,9 +153,13 @@ Developer Documentation files for %{name} in HTML format
 %prep
 %autosetup -n %{name}-%{version}/upstream -p1
 
-
 %build
-%cmake_kf6
+%cmake_kf6 \
+  -DKIOGUI_ONLY=ON \
+  -DBUILD_DESIGNERPLUGIN=OFF \
+  -DUSE_DBUS=ON \
+  -DWITH_X11=OFF \
+  -DWITH_WAYLAND=ON \
 %cmake_build
 
 %install
@@ -190,23 +194,23 @@ Developer Documentation files for %{name} in HTML format
 %files gui
 %{_kf6_libdir}/libKF6KIOGui.so.*
 
-%files widgets
-%dir %{_kf6_plugindir}/urifilters/
-%{_kf6_plugindir}/urifilters/*.so
-%{_kf6_libdir}/libkuriikwsfiltereng_private.so.*
-
-%files widgets-libs
-%{_kf6_libdir}/libKF6KIOWidgets.so.*
-
-%files file-widgets
-%{_kf6_libdir}/libKF6KIOFileWidgets.so.*
+#%%files widgets
+#%%dir %%{_kf6_plugindir}/urifilters/
+#%%{_kf6_plugindir}/urifilters/*.so
+#%%{_kf6_libdir}/libkuriikwsfiltereng_private.so.*
+#
+#%%files widgets-libs
+#%%{_kf6_libdir}/libKF6KIOWidgets.so.*
+#
+#%%files file-widgets
+#%%{_kf6_libdir}/libKF6KIOFileWidgets.so.*
 
 %files devel
 %{_kf6_includedir}/*
 %{_kf6_libdir}/*.so
 %{_kf6_libdir}/cmake/KF6KIO/
 %{_kf6_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
-%{_kf6_qtplugindir}/designer/kio6widgets.so
+#%%{_kf6_qtplugindir}/designer/kio6widgets.so
 %{_qt6_docdir}/*/*.tags
 %{_qt6_docdir}/*/*.index
 
