@@ -1,4 +1,4 @@
-%global  kf_version 6.18.0
+%global  kf_version 6.7.0
 
 Name:    kf6-kio
 Version: 6.18.0
@@ -12,50 +12,66 @@ Source0: %{name}-%{version}.tar.bz2
 
 
 
-BuildRequires:  kf6-extra-cmake-modules >= %{majmin_ver_kf6}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf_version}
 BuildRequires:  gcc-c++
 BuildRequires:  kf6-rpm-macros
 BuildRequires:  cmake
-BuildRequires:  pkgconfig(KF6Archive)
-BuildRequires:  pkgconfig(KF6Crash)
-BuildRequires:  pkgconfig(KF6Solid)
-BuildRequires:  switcheroo-control
-BuildRequires:  pkgconfig(KF6ColorScheme)
-BuildRequires:  pkgconfig(KF6Config)
-BuildRequires:  pkgconfig(KF6CoreAddons)
-BuildRequires:  pkgconfig(KF6DBusAddons)
-BuildRequires:  pkgconfig(KF6DocTools)
-BuildRequires:  pkgconfig(KF6GuiAddons)
-BuildRequires:  pkgconfig(KF6I18n)
-BuildRequires:  pkgconfig(KF6Service)
-BuildRequires:  qt6-qtbase-private-devel
-BuildRequires:  pkgconfig(KF6Bookmarks)
-BuildRequires:  pkgconfig(KF6Completion)
-BuildRequires:  pkgconfig(KF6ConfigWidgets)
-BuildRequires:  pkgconfig(KF6IconThemes)
-BuildRequires:  pkgconfig(KF6ItemViews)
-BuildRequires:  pkgconfig(KF6JobWidgets)
-BuildRequires:  pkgconfig(KF6WindowSystem)
-BuildRequires:  pkgconfig(KF6Notifications)
-BuildRequires:  pkgconfig(KF6Wallet)
-BuildRequires:  pkgconfig(KF6WidgetsAddons)
-BuildRequires:  pkgconfig(KF6XmlGui)
 
-BuildRequires:  libacl-devel
+# General deps:
+BuildRequires:  kf6-kconfig-devel
+BuildRequires:  pkgconfig(KF6CoreAddons)
+BuildRequires:  kf6-ki18n-devel
+BuildRequires:  kf6-kservice-devel
+#BuildRequires:  pkgconfig(KF6DocTools)
+BuildRequires:  kf6-solid-devel
+#BuildRequires:  pkgconfig(KF6Crash)
+
+# If not KIOCORE_ONLY:
+BuildRequires:  pkgconfig(KF6WindowSystem)
+
+# If not KIOGUI_ONLY:
+#BuildRequires:  pkgconfig(KF6Bookmarks)
+#BuildRequires:  pkgconfig(KF6Completion)
+BuildRequires:  kf6-kcolorscheme-devel
+BuildRequires:  kf6-kguiaddons-devel
+BuildRequires:  kf6-kiconthemes-devel
+BuildRequires:  kf6-kitemviews-devel
+#BuildRequires:  pkgconfig(KF6JobWidgets)
+BuildRequires:  kf6-kwidgetsaddons-devel
+
+
+BuildRequires:  kf6-kauth-devel
+#BuildRequires:  pkgconfig(KF6Auth)
+
+#BuildRequires:  pkgconfig(KF6KDED)
+
+#BuildRequires:  pkgconfig(KF6Archive)
+#BuildRequires:  switcheroo-control
+BuildRequires:  kf6-kdbusaddons-devel
+BuildRequires:  qt6-qtbase-private-devel
+BuildRequires:  kf6-kconfigwidgets-devel
+BuildRequires:  kf6-knotifications-devel
+#BuildRequires:  pkgconfig(KF6Wallet)
+BuildRequires:  kf6-kxmlgui-devel
+
+BuildRequires:  pkgconfig(libacl)
 #%%if !0%%{?flatpak}
 #BuildRequires:  libxml2-devel
 #BuildRequires:  libxslt-devel
 #%%endif
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
+
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
+
 
 BuildRequires:  qt6-qtbase-devel
 BuildRequires:  pkgconfig(Qt6UiPlugin)
 BuildRequires:  pkgconfig(Qt6Qml)
 
-BuildRequires:  pkgconfig(KF6KDED)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
 
 Requires:       %{name}-core%{?_isa} = %{version}-%{release}
@@ -63,7 +79,7 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 #Requires:       %%{name}-file-widgets%%{?_isa} = %%{version}-%%{release}
 Requires:       %{name}-gui%{?_isa} = %{version}-%{release}
 
-Requires: kf6-kded
+#Requires: kf6-kded
 
 %description
 KDE Frameworks 6 Tier 3 solution for filesystem abstraction
