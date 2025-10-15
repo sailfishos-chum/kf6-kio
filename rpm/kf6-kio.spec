@@ -87,15 +87,21 @@ KDE Frameworks 6 Tier 3 solution for filesystem abstraction
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-Requires:       kf6-kbookmarks-devel
-Requires:       pkgconfig(KF6Completion)
-Requires:       pkgconfig(KF6Config)
+#Requires:       pkgconfig(KF6Bookmarks)
+#Requires:       kf6-kbookmarks-devel
+#Requires:       pkgconfig(KF6Completion)
+#Requires:       pkgconfig(KF6Config)
+Requires:       kf6-kconfig-devel
 Requires:       pkgconfig(KF6CoreAddons)
-Requires:       pkgconfig(KF6ItemViews)
-Requires:       pkgconfig(KF6JobWidgets)
-Requires:       pkgconfig(KF6Service)
-Requires:       pkgconfig(KF6Solid)
-Requires:       pkgconfig(KF6XmlGui)
+#Requires:       pkgconfig(KF6ItemViews)
+Requires:       kf6-kitemviews-devel
+#Requires:       pkgconfig(KF6JobWidgets)
+#Requires:       pkgconfig(KF6Service)
+Requires:       kf6-kservice-devel
+#Requires:       pkgconfig(KF6Solid)
+Requires:       kf6-solid-devel
+#Requires:       pkgconfig(KF6XmlGui)
+Requires:       kf6-kxmlgui-devel
 Requires:       pkgconfig(KF6WindowSystem)
 Requires:       qt6-qtbase-devel
 %description    devel
@@ -114,7 +120,7 @@ Summary:        Core components of the KIO Framework
 %{?kf6_kinit_requires}
 Requires:       %{name}-core-libs%{?_isa} = %{version}-%{release}
 Requires:       %{name}-doc = %{version}-%{release}
-Requires:       kf6-filesystem
+#Requires:       kf6-filesystem
 Recommends:     switcheroo-control
 %description    core
 KIOCore library provides core non-GUI components for working with KIO.
