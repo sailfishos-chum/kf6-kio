@@ -154,17 +154,17 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %description    gui
 %{summary}.
 
-%package        qch-doc
-Summary:        Developer Documentation files for %{name}
-BuildArch:      noarch
-%description    qch-doc
-Developer Documentation files for %{name} for use with KDevelop or QtCreator.
+#%%package        qch-doc
+#Summary:        Developer Documentation files for %%{name}
+#BuildArch:      noarch
+#%%description    qch-doc
+#Developer Documentation files for %%{name} for use with KDevelop or QtCreator.
 
-%package        html
-Summary:        Developer Documentation files for %{name}
-BuildArch:      noarch
-%description    html
-Developer Documentation files for %{name} in HTML format
+#%%package        html
+#Summary:        Developer Documentation files for %%{name}
+#BuildArch:      noarch
+#%%description    html
+#Developer Documentation files for %%{name} in HTML format
 
 %prep
 %autosetup -n %{name}-%{version}/upstream -p1
@@ -227,14 +227,14 @@ Developer Documentation files for %{name} in HTML format
 %{_kf6_libdir}/cmake/KF6KIO/
 %{_kf6_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
 #%%{_kf6_qtplugindir}/designer/kio6widgets.so
-%{_qt6_docdir}/*/*.tags
-%{_qt6_docdir}/*/*.index
+#%%{_qt6_docdir}/*/*.tags
+#%%{_qt6_docdir}/*/*.index
 
-%files qch-doc
-%{_qt6_docdir}/*.qch
+#%%files qch-doc
+#%%{_qt6_docdir}/*.qch
 
-%files html
-%{_qt6_docdir}/*/*
-%exclude %{_qt6_docdir}/*/*.tags
-%exclude %{_qt6_docdir}/*/*.index
+#%%files html
+#%%{_qt6_docdir}/*/*
+#%%exclude %%{_qt6_docdir}/*/*.tags
+#%%exclude %%{_qt6_docdir}/*/*.index
  
