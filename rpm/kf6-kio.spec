@@ -177,7 +177,13 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+  -DBUILD_DESIGNERPLUGIN=OFF \
+  -DUSE_DBUS=ON \
+  -DWITH_X11=OFF \
+  -DWITH_WAYLAND=ON \
+  %{nil}
+
 %cmake_build
 
 %install
@@ -228,15 +234,9 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %{_kf6_libdir}/*.so
 %{_kf6_libdir}/cmake/KF6KIO/
 %{_kf6_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
-<<<<<<< HEAD
-#%%{_kf6_qtplugindir}/designer/kio6widgets.so
-#%%{_qt6_docdir}/*/*.tags
-#%%{_qt6_docdir}/*/*.index
-=======
 %{_kf6_qtplugindir}/designer/kio6widgets.so
 %{_qt6_docdir}/*/*.tags
 %{_qt6_docdir}/*/*.index
->>>>>>> parent of c3cb4a1 (Disable building Widgets)
 
 #%%files qch-doc
 #%%{_qt6_docdir}/*.qch
