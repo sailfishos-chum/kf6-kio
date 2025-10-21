@@ -108,12 +108,12 @@ Requires:       qt6-qtbase-devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package        doc
-Summary:        Documentation files for %{name}
-Requires:       %{name}-core = %{version}-%{release}
-BuildArch:      noarch
-%description    doc
-Documentation for %{name}.
+#%%package        doc
+#Summary:        Documentation files for %%{name}
+#Requires:       %%{name}-core = %%{version}-%%{release}
+#BuildArch:      noarch
+#%%description    doc
+#Documentation for %%{name}.
 
 %package        core
 Summary:        Core components of the KIO Framework
@@ -219,7 +219,7 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %files widgets
 %dir %{_kf6_plugindir}/urifilters/
 %{_kf6_plugindir}/urifilters/*.so
-%{_kf6_libdir}/libkuriikwsfiltereng_private.so.*
+#%%{_kf6_libdir}/libkuriikwsfiltereng_private.so.*
 
 %files widgets-libs
 %{_kf6_libdir}/libKF6KIOWidgets.so.*
@@ -232,9 +232,7 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %{_kf6_libdir}/*.so
 %{_kf6_libdir}/cmake/KF6KIO/
 %{_kf6_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
-%{_kf6_qtplugindir}/designer/kio6widgets.so
-%{_qt6_docdir}/*/*.tags
-%{_qt6_docdir}/*/*.index
+#%%{_kf6_qtplugindir}/designer/kio6widgets.so
 
 #%%files qch-doc
 #%%{_qt6_docdir}/*.qch
