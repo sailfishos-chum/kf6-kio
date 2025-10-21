@@ -189,13 +189,13 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 %install
 %cmake_install
 
-%find_lang %{name} --all-name --with-man --with-html
+%find_lang kio6
 
 %files
 %license LICENSES/*.txt
 %doc README.md
 
-%files core
+%files core -f kio6.lang
 #%%{_kf6_libexecdir}/kioexec
 %{_kf6_libexecdir}/kiod6
 %{_kf6_libexecdir}/kioworker
@@ -212,8 +212,6 @@ Requires:       %{name}-core%{?_isa} = %{version}-%{release}
 
 %files core-libs
 %{_kf6_libdir}/libKF6KIOCore.so.*
-
-%files doc -f %{name}.lang
 
 %files gui
 %{_kf6_libdir}/libKF6KIOGui.so.*
