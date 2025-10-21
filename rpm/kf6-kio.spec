@@ -87,22 +87,16 @@ KDE Frameworks 6 Tier 3 solution for filesystem abstraction
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}-%{release}
-#Requires:       pkgconfig(KF6Bookmarks)
-#Requires:       kf6-kbookmarks-devel
-#Requires:       pkgconfig(KF6Completion)
-#Requires:       pkgconfig(KF6Config)
+Requires:       kf6-kbookmarks-devel
+Requires:       kf6-kcompletion-devel
 Requires:       kf6-kconfig-devel
-Requires:       pkgconfig(KF6CoreAddons)
-#Requires:       pkgconfig(KF6ItemViews)
+Requires:       kf6-kcoreaddons-devel
 Requires:       kf6-kitemviews-devel
-#Requires:       pkgconfig(KF6JobWidgets)
-#Requires:       pkgconfig(KF6Service)
+Requires:       kf6-kjobwidgets-devel
 Requires:       kf6-kservice-devel
-#Requires:       pkgconfig(KF6Solid)
 Requires:       kf6-solid-devel
-#Requires:       pkgconfig(KF6XmlGui)
 Requires:       kf6-kxmlgui-devel
-Requires:       pkgconfig(KF6WindowSystem)
+Requires:       kf6-kwindowsystem-devel
 Requires:       qt6-qtbase-devel
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -119,6 +113,7 @@ developing applications that use %{name}.
 Summary:        Core components of the KIO Framework
 %{?kf6_kinit_requires}
 Requires:       %{name}-core-libs%{?_isa} = %{version}-%{release}
+#Requires:       %%{name}-doc = %%{version}-%%{release}
 #Requires:       kf6-filesystem
 Recommends:     switcheroo-control
 %description    core
