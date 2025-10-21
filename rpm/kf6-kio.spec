@@ -30,13 +30,13 @@ BuildRequires:  kf6-solid-devel
 BuildRequires:  pkgconfig(KF6WindowSystem)
 
 # If not KIOGUI_ONLY:
-#BuildRequires:  pkgconfig(KF6Bookmarks)
-#BuildRequires:  pkgconfig(KF6Completion)
+BuildRequires:  kf6-kbookmarks-devel
+BuildRequires:  kf6-kcompletion-devel
 BuildRequires:  kf6-kcolorscheme-devel
 BuildRequires:  kf6-kguiaddons-devel
 BuildRequires:  kf6-kiconthemes-devel
 BuildRequires:  kf6-kitemviews-devel
-#BuildRequires:  pkgconfig(KF6JobWidgets)
+BuildRequires:  kf6-kjobwidgets-devel
 BuildRequires:  kf6-kwidgetsaddons-devel
 
 
