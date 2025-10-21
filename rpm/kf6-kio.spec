@@ -119,7 +119,6 @@ developing applications that use %{name}.
 Summary:        Core components of the KIO Framework
 %{?kf6_kinit_requires}
 Requires:       %{name}-core-libs%{?_isa} = %{version}-%{release}
-Requires:       %{name}-doc = %{version}-%{release}
 #Requires:       kf6-filesystem
 Recommends:     switcheroo-control
 %description    core
